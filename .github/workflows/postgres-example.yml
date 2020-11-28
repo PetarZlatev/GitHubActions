@@ -1,0 +1,35 @@
+name: CI for VDC-bundles
+
+on: push
+
+jobs:
+  vm-job:
+    runs-on: ubuntu-latest
+
+    container:
+      image: maven:3-jdk-8
+
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --name postgres --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: just ls 
+        timeout-minutes: 5
+        run: ls -la 
+
