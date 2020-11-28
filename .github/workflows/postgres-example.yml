@@ -27,6 +27,8 @@ jobs:
           docker ps
           docker exec -u postgres $POSTGRES_CONTAINER /usr/bin/psql -c "SHOW max_connections;"
           set +xe;
+        env:
+          POSTGRES_CONTAINER: postgres
 
       - name: Checkout code
         uses: actions/checkout@v2
