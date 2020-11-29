@@ -15,7 +15,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres
+          --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres postgres -c max_connections=200
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
