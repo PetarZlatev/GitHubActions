@@ -18,9 +18,13 @@ jobs:
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
-        options: --name postgres -e POSTGRES_PASSWORD=mysecretpassword postgres -c shared_buffers=256MB -c max_connections=200
-
-
+        options: >-
+          --name postgres -e -c shared_buffers=256MB -c max_connections=1000
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+          -c max_connections=1000
 
     steps:
 
