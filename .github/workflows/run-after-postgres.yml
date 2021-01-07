@@ -2,7 +2,7 @@ name: Example how to use workflow_run event to trigger a build
 
 on:
   workflow_run:
-    workflows: ["Customize postgres service"]
+    workflows: ["not existing workflow"]
     branches: [main]
     types:
       - completed
