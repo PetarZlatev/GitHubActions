@@ -5,7 +5,7 @@ on:
     workflows: ["Customize postgres service"]
     branches: [main]
     types:
-      - completed
+      - success
 
 jobs:
   run-after-postgres-service:
