@@ -42,6 +42,3 @@ jobs:
           set +xe;
         env:
           POSTGRES_CONTAINER: postgres
-
-      - name: let the job fail
-        run :  exit 1
