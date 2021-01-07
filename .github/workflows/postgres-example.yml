@@ -1,9 +1,9 @@
-name: CI for VDC-bundles
+name: Customize postgres service
 
 on: push
 
 jobs:
-  vm-job:
+  use-postgres-service:
     runs-on: ubuntu-latest
 
     container:
