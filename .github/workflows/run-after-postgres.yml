@@ -1,0 +1,21 @@
+name: Example how to use workflow_run event to trigger a build
+
+on:
+  workflow_run:
+    workflows: ["Customize postgres service"]
+    branches: [main]
+    types:
+      - completed
+      - requested
+
+jobs:
+  use-postgres-service:
+    runs-on: ubuntu-latest
+
+    container:
+      image: maven:3-jdk-8
+
+    steps:
+
+      - name: first step from the second workflow
+        run:  echo 'second workflow'
