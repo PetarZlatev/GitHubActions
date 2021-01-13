@@ -25,13 +25,13 @@ jobs:
 
       - name: Install docker CLI
         run: |
-         export DEBIAN_FRONTEND=noninteractive;
-         apt-get update -y;
-         curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -;
-         apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common;
-         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable";
-         apt-get update -y;
-         apt-get install -y docker-ce-cli;
+          export DEBIAN_FRONTEND=noninteractive;
+          apt-get update -y;
+          curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -;
+          apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common;
+          add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable";
+          apt-get update -y;
+          apt-get install -y docker-ce-cli;
 
 
       - name: check db setting
@@ -42,3 +42,11 @@ jobs:
           set +xe;
         env:
           POSTGRES_CONTAINER: postgres
+
+  run-on-branch:
+    runs-on: ubuntu-latest
+    needs: [use-postgres-service]
+
+    steps:
+      - name: second job, first step
+        run: echo 'first step'
