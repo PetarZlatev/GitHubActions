@@ -56,7 +56,7 @@ jobs:
         run: echo 'first step'
 
   skip-run-on-branch-job:
-    name: Skipped run-on-branch job for brach {{github.ref}}
+    name: Skipped run-on-branch job for brach ${GITHUB_REF##*/}
     runs-on: [ ubuntu-latest ]
     needs: [use-postgres-service]
     if: |
