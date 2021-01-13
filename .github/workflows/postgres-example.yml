@@ -4,6 +4,7 @@ on: push
 
 jobs:
   use-postgres-service:
+    name: build on brach ${GITHUB_REF##*/}
     runs-on: ubuntu-latest
 
     container:
