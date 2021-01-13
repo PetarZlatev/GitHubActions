@@ -48,8 +48,8 @@ jobs:
     needs: [use-postgres-service]
     if: |
       github.ref == 'refs/heads/main'  ||
-      github.ref == 'refs/heads/hotfix/*' ||
-      github.ref == 'refs/heads/release/*'
+      startsWith( 'refs/heads/hotfix/', github.ref ) ||
+      startsWith( 'refs/heads/release/', github.ref )
 
     steps:
       - name: second job, first step
